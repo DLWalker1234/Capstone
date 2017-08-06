@@ -10,6 +10,7 @@ movieApp.controller("UserController", function($scope, $window, UserFactory) {
     password: ""
   };
 
+  
   $scope.register = () => {
     // TODO validate that user doesn't exist
     console.log("you clicked register");
@@ -27,6 +28,7 @@ movieApp.controller("UserController", function($scope, $window, UserFactory) {
       $window.location.href = '#!/movie';
     });
   };
+      // $window.location.href = "#!/movie";
 
 
 

@@ -1,7 +1,7 @@
 'use strict';
 
 let movieApp = angular.module("MovieApp", ["ngRoute"])
-.constant("FirebaseUrl", "https://movievs.firebaseio.com/");
+.constant("FirebaseUrl", "https://movievs-2dac3.firebaseio.com");
 
 console.log("app start");
 
@@ -26,7 +26,7 @@ movieApp.config( ($routeProvider) => {
 	})
 	.when('/movie', {
 		templateUrl: 'partials/movie.html',
-		controller: 'movieController',
+		controller: 'MovieController',
 		resolve: {isAuth}
 	})
 	.otherwise('/');

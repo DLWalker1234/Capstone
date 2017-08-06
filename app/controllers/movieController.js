@@ -1,26 +1,11 @@
 'use strict';
 
-movieApp.controller("UserController", function($scope, $window, UserFactory) {
+movieApp.controller("MovieController", function($scope, $window, MovieFactory, UserFactory) {
+		MovieFactory.getImdb250();
+		MovieFactory.getPopularMovies1();
+		MovieFactory.getPopularMovies2();
+		
 
-	$scope.account = {
-		email: "",
-		password: ""
-	};
+	
 
-	$scope.register = () => {
-		console.log("Register Button Clicked!");
-		UserFactory.createUser($scope.account)
-		.then( (userData) => {
-			console.log("new user made", userData);
-			$scope.login();
-		});
-	};
-
-	$scope.login = () => {
-		UserFactory.loginUser($scope.account)
-		.then( (userData) => {
-			console.log("Log In", userData);
-			$window.location.href = '#!/home';
-		});
-	};
 });

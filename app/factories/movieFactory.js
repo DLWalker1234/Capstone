@@ -5,7 +5,10 @@ movieApp.factory("MovieFactory", function($q, $http, FirebaseUrl, UserFactory, a
 	let getImdb250 = () => {
 		return $q( (resolve, reject) => {
 			$http.get(`${FirebaseUrl}/movieList.json`)
-			.then( (movieList) => {
+			.then( (data) => {
+				console.log("working and stuff", data);
+				let movieList = Object.values(data);
+				console.log("movie array", movieList);
 				resolve(movieList);
 			})
 			.catch( (err) => {
