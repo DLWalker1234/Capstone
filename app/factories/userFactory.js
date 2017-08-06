@@ -10,6 +10,10 @@ movieApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
 
     firebase.initializeApp(config);
 
+    
+    console.log("domain", FBCreds.authDomain);
+    console.log("um", FBCreds.key);
+
     let currentUser = null;
 
     let isAuthenticated = function() {

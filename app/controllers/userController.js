@@ -1,6 +1,9 @@
 'use strict';
 
+console.log("user controller");
+
 movieApp.controller("UserController", function($scope, $window, UserFactory) {
+
 
   $scope.account = {
     email: "",
@@ -21,7 +24,7 @@ movieApp.controller("UserController", function($scope, $window, UserFactory) {
     UserFactory.loginUser($scope.account)
     .then( (userData) => {
       console.log("userData", userData);
-      $window.location.href = '#!/home';
+      $window.location.href = '#!/movie';
     });
   };
 
