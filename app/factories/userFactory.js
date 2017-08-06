@@ -2,11 +2,21 @@
 
 movieApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
 
-    var config = {
-        key: FBCreds.key,
-        authDomain: FBCreds.authDomain
-    };
+    // var config = {
+    //     key: FBCreds.key,
+    //     authDomain: FBCreds.authDomain
+    // };
 
+
+
+    var config = {
+        apiKey: FBCreds.key,
+        authDomain: "movievs-2dac3.firebaseapp.com",
+        databaseURL: "https://movievs-2dac3.firebaseio.com",
+        projectId: "movievs-2dac3",
+        storageBucket: "movievs-2dac3.appspot.com",
+        messagingSenderId: "786686695796"
+    };
 
     firebase.initializeApp(config);
 
