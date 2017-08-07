@@ -2,12 +2,6 @@
 
 movieApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
 
-    // var config = {
-    //     key: FBCreds.key,
-    //     authDomain: FBCreds.authDomain
-    // };
-
-
 
     var config = {
         apiKey: FBCreds.key,
@@ -20,9 +14,6 @@ movieApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
 
     firebase.initializeApp(config);
 
-    
-    console.log("domain", FBCreds.authDomain);
-    console.log("um", FBCreds.key);
 
     let currentUser = null;
 
@@ -71,7 +62,6 @@ movieApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
         });
     };
 
-    console.log("firebase", firebase);
 
     return {isAuthenticated, getUser, createUser, loginUser, logoutUser};
 });

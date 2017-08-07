@@ -3,13 +3,11 @@
 movieApp.factory("MovieFactory", function($q, $http, FirebaseUrl, UserFactory, apiGet) {
 
 	let getImdb250 = () => {
+		
 		return $q( (resolve, reject) => {
 			$http.get(`${FirebaseUrl}/movieList.json`)
 			.then( (data) => {
-				console.log("working and stuff", data);
-				let movieList = Object.values(data);
-				console.log("movie array", movieList);
-				resolve(movieList);
+				resolve(data);
 			})
 			.catch( (err) => {
 				console.log("IMDB 250 error");

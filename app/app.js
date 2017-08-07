@@ -3,7 +3,6 @@
 let movieApp = angular.module("MovieApp", ["ngRoute"])
 .constant("FirebaseUrl", "https://movievs-2dac3.firebaseio.com");
 
-console.log("app start");
 
 let isAuth = (UserFactory) => {
 	return new Promise( (resolve, reject) => {

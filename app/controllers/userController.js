@@ -1,6 +1,5 @@
 'use strict';
 
-console.log("user controller");
 
 movieApp.controller("UserController", function($scope, $window, UserFactory) {
 
