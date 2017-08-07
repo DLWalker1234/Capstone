@@ -6,7 +6,7 @@ movieApp.controller("MovieController", function($scope, $window, MovieFactory, U
 
 		let removeMovie = (movie) => {
 			let removeMovie = $scope.movies.indexOf(movie);
-			// $scope.movies.splice(movie);
+			$scope.movies.splice(movie, 1);
 			console.log("removie", removeMovie);
 		};
 
@@ -37,7 +37,11 @@ movieApp.controller("MovieController", function($scope, $window, MovieFactory, U
 			console.log($scope.movie2);
 			rankMoviesArr.push(movie1, movie2);
 			$scope.ranks = rankMoviesArr;
-			console.log("rank", rankMoviesArr);
+			console.log("rank movies in vote1", rankMoviesArr);
+			removeMovie(movie1);
+			removeMovie(movie2);
+			pickRandomMovies();
+			console.log("what??? 1");
 
 		};
 
@@ -51,7 +55,11 @@ movieApp.controller("MovieController", function($scope, $window, MovieFactory, U
 			console.log($scope.movie2);
 			rankMoviesArr.push(movie2, movie1);
 			$scope.ranks = rankMoviesArr;
-			console.log("rank", rankMoviesArr);
+			console.log("ranked movies in vote2", rankMoviesArr);
+			removeMovie(movie1);
+			removeMovie(movie2);
+			pickRandomMovies();
+			console.log("what??? 2");
 		};
 
 		// let rankMovies = (rankMoviesArr) => {
@@ -61,6 +69,10 @@ movieApp.controller("MovieController", function($scope, $window, MovieFactory, U
 
 		// // $filter('orderBy')(collection, expression, reverse, comparator)
 		
+		let vs = () => {
+
+
+		};
 
 		$scope.movies = [];
 		MovieFactory.getImdb250()
