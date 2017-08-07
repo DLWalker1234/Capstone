@@ -1,7 +1,7 @@
 <h1>MovieVs</h1>
 
-<div class="rank" ng-repeat="movie in rankMoviesArr">
 	<h2>Rank</h2>
+<div class="rank" ng-repeat="movie in ranks | orderBy:'rank':true">
 	{{movie.original_title}}
 </div>
 

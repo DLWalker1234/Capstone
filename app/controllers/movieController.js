@@ -1,6 +1,6 @@
 'use strict';
 
-movieApp.controller("MovieController", function($scope, $window, MovieFactory, UserFactory) {
+movieApp.controller("MovieController", function($filter, $scope, $window, MovieFactory, UserFactory) {
 
 		let rankMoviesArr = [];
 
@@ -62,13 +62,6 @@ movieApp.controller("MovieController", function($scope, $window, MovieFactory, U
 			console.log("what??? 2");
 		};
 
-		// let rankMovies = (rankMoviesArr) => {
-		// 	$filter('orderBy')(rankMoviesArr, expression, reverse, rankMoviesArr.rank);
-		// 	console.log("rank movies function");
-		// };
-
-		// // $filter('orderBy')(collection, expression, reverse, comparator)
-		
 		let vs = () => {
 
 
