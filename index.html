@@ -2,11 +2,19 @@
 <html>
 <head>
 	<title>MovieVs</title>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-app="MovieApp" ng-controller="UserController">
+	<h1>MovieVs</h1>
 
 	<!-- <div ng-include="'partials/logIn.html'"></div> -->
-	 <div ng-view></div>
+	<div class="container">
+		<div class="row">
+	 		<div ng-view></div>
+		</div>	
+	</div>
+
 
 
 
@@ -20,6 +28,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <!-- app files -->

@@ -2,12 +2,26 @@
 
 movieApp.controller("MovieController", function($filter, $scope, $window, MovieFactory, UserFactory) {
 
+		let top20 = [];
 		let rankMoviesArr = [];
 
 		let removeMovie = (movie) => {
 			let removeMovie = $scope.movies.indexOf(movie);
 			$scope.movies.splice(movie, 1);
 			console.log("removie", removeMovie);
+		};
+
+		let top20maker = (rankMovieArr, top20) => {
+			if (top20 < 19) {
+				top20 = rankMoviesArr;
+				$scope.top = top20;
+				console.log("top20maker function",top20);
+			} else {
+				top20 = rankMovieArr.splice(0, 19);
+				$scope.top = top20;
+				console.log("top20maker function",top20);
+			}
+
 		};
 
 		let pickRandomMovies = () => {
@@ -37,6 +51,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 			console.log($scope.movie2);
 			rankMoviesArr.push(movie1, movie2);
 			$scope.ranks = rankMoviesArr;
+			top20maker(rankMoviesArr, top20);
 			console.log("rank movies in vote1", rankMoviesArr);
 			removeMovie(movie1);
 			removeMovie(movie2);
@@ -55,6 +70,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 			console.log($scope.movie2);
 			rankMoviesArr.push(movie2, movie1);
 			$scope.ranks = rankMoviesArr;
+			top20maker(rankMoviesArr, top20);
 			console.log("ranked movies in vote2", rankMoviesArr);
 			removeMovie(movie1);
 			removeMovie(movie2);
@@ -62,10 +78,6 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 			console.log("what??? 2");
 		};
 
-		let vs = () => {
-
-
-		};
 
 		$scope.movies = [];
 		MovieFactory.getImdb250()

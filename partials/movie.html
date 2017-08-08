@@ -1,18 +1,19 @@
-<h1>MovieVs</h1>
 
+	<div class="col s3">
 	<h2>Rank</h2>
-<div class="rank" ng-repeat="movie in ranks | orderBy:'rank':true">
-	{{movie.original_title}}
-</div>
+		<div ng-repeat="movie in top | orderBy:'rank':true">
+			<h5>{{movie.original_title}}</h5>
+		</div>
+	</div>
 
-<div class="vs">
-	<div class="movieCard1">
+<div>
+	<div class="col s4">
 		<img class="poster" ng-src="{{movie1.poster_path}}">
 		<h1>{{movie1.original_title}} ({{movie1.release_date}})</h1>
 		<button id="movie1" ng-click="voteMovie1(movie1, movie2)">Vote</button>
 	</div>
-	<h1>VS</h1>
-	<div class="movieCard2">
+	<h2 clss="col s1">VS</h2>
+	<div class="col s4">
 		<img class="poster" ng-src="{{movie2.poster_path}}">
 		<h1>{{movie2.original_title}} ({{movie2.release_date}})</h1>
 		<button id="movie2" ng-click="voteMovie2(movie2, movie1)">Vote</button>
