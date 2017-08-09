@@ -1,7 +1,7 @@
 
 	<div class="col s3">
 	<h2>Rank</h2>
-		<div ng-repeat="movie in top | orderBy:'rank':true">
+		<div ng-repeat="movie in top track by $index">
 			<h5>{{movie.original_title}}</h5>
 		</div>
 	</div>

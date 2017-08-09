@@ -71,5 +71,18 @@ movieApp.factory("MovieFactory", function($q, $http, FirebaseUrl, UserFactory, a
 		});
 	};
 
-	return { getImdb250, addMovie, searchMovies, getPopularMovies1, getPopularMovies2};
+	let randomMovie = (randomNumber) => {
+		return $q( (resolve, reject) => {
+			$http.get(`http://api.themoviedb.org/3/movie/{randomNumber}?api_key=c8d52d1b4aba118972c33b3a3aba1eae`)
+			.then( (movieObj) => {
+				console.log("random?", movieObj);
+				resolve(movieObj);
+			})
+			.catch( (err) => {
+				console.log("genre error");
+				reject();
+			});
+		});
+	};
+	return { getImdb250, addMovie, searchMovies, getPopularMovies1, getPopularMovies2, randomMovie};
 });

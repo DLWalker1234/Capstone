@@ -2,6 +2,7 @@
 
 let movieApp = angular.module("MovieApp", ["ngRoute"])
 .constant("FirebaseUrl", "https://movievs-2dac3.firebaseio.com");
+// .constant("_", window._);
 
 
 let isAuth = (UserFactory) => {
