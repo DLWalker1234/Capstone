@@ -46,8 +46,13 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 
 		//array = _.uniqBy(array, "name");
 		let pickRandomMovies = () => {
-			let movie1 = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
-			let movie2 = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
+			let movie1;
+			let movie2;
+			do {
+				movie1 = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
+				movie2 = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
+			}
+			while (movie1 === movie2);
 			rankMoviesArr.push(movie1, movie2);
 			$scope.movie1 = movie1;
 			$scope.movie2 = movie2;
@@ -55,23 +60,29 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 
 		let pickRankedMovies = () => {
 			rankMoviesArr = _.uniqBy( rankMoviesArr, "original_title");
-			let movieA = rankMoviesArr[Math.floor(Math.random()*rankMoviesArr.length)];
-			let movieB = rankMoviesArr[Math.floor(Math.random()*rankMoviesArr.length)];
-			$scope.movieA = movieA;
-			$scope.movieB = movieB;
+			let movieA;
+			let movieB;
+			do {
+				movieA = rankMoviesArr[Math.floor(Math.random()*rankMoviesArr.length)];
+				movieB = rankMoviesArr[Math.floor(Math.random()*rankMoviesArr.length)];
+			}
+			while (movieA === movieB);
+			$scope.movie1 = movieA;
+			$scope.movie2 = movieB;
 		};
 
 		let pickTop20 = () => {
+			let movieAlpha;
+			let movieBravo;
 			top20 = _.uniqBy( top20, "original_title");
 			console.log("top 20", top20);
-			let movieAlpha = top20[Math.floor(Math.random()*top20.length)];
-			let movieBravo = top20[Math.floor(Math.random()*top20.length)];
-			$scope.movieAlpha = movieAlpha;
-			$scope.movieBraco = movieBravo;
-		};
-
-		let filter = () => {
-
+			do {
+				movieAlpha = top20[Math.floor(Math.random()*top20.length)];
+				movieBravo = top20[Math.floor(Math.random()*top20.length)];
+			}
+			while (movieAlpha === movieBravo);
+			$scope.movie1 = movieAlpha;
+			$scope.movie2 = movieBravo;
 		};
 
 		//need to fix incase there is no more movies in generic movie list
