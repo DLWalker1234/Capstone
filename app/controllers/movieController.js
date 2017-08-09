@@ -1,15 +1,7 @@
 'use strict';
 
 movieApp.controller("MovieController", function($filter, $scope, $window, MovieFactory, UserFactory) {
-		let boy = {name: "bob", age: 12};
-		let array = [{name: "bob", age: 12},{name: "sam", age: 10},{name: "bob", age: 9},{name: "henry", age: 5},{name: "luke", age: 7},{name: "sam", age: 10}];
-		console.log("before", array);
-		array = _.uniqBy(array, "name");
-
-
-
-		console.log('array?', array);
-
+		
 		let counter = 0;
 
 		let top20 = [];
@@ -37,16 +29,14 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 		let makeTop20 = () => {
 			if (rankMoviesArr.length < 20) {
 				top20 = [];
-				console.log("should be empty", top20);
-				top20 = _.uniqBy(top20, "original_title");
-				console.log("before slice", top20);
 				top20 = rankMoviesArr.slice(0, rankMoviesArr.length);
+				top20 = _.uniqBy(top20, "original_title");
 				console.log("after slice", top20);
 				$scope.top = top20;
 			} else {
 				top20 =[];
-				top20 = _.uniqBy(top20, "original_title");
 				top20 = rankMoviesArr.slice(0,20);
+				top20 = _.uniqBy(top20, "original_title");
 				console.log("makeTop20 function", rankMoviesArr);
 				$scope.top = top20;
 			}
@@ -58,6 +48,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 		let pickRandomMovies = () => {
 			let movie1 = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
 			let movie2 = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
+			rankMoviesArr.push(movie1, movie2);
 			$scope.movie1 = movie1;
 			$scope.movie2 = movie2;
 		};
@@ -91,7 +82,8 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 				counter += 1;
 			} else if (counter % 2 === 0) {
 				console.log("2");
-				pickRandomMovies();
+				pickTop20();
+				
 				counter += 1;
 			} else if (counter % 3 === 0) {
 				console.log("3");
@@ -99,7 +91,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 				counter += 1;
 			} else {
 				console.log("4");
-				pickTop20();
+				pickRandomMovies();
 				counter += 1;
 			}
 		};
@@ -110,10 +102,9 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 			movie1.rank = movie1.won/movie1.totalFights;
 			movie2.totalFights += 1;
 			console.log('before push', rankMoviesArr);
-			rankMoviesArr.push(movie1, movie2);
+			// rankMoviesArr.push(movie1, movie2);
 			rankMoviesArr = _.uniqBy(rankMoviesArr, "original_title");
 			console.log('after push', rankMoviesArr);
-			console.log("help", rankMoviesArr);
 			
 
 			sortByrank(rankMoviesArr);
@@ -134,7 +125,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 			movie2.rank = movie2.won/movie2.totalFights;
 			movie1.totalFights += 1;
 			
-			rankMoviesArr.push(movie2, movie1);
+			// rankMoviesArr.push(movie2, movie1);
 
 			sortByrank(rankMoviesArr);
 			sortByWon(rankMoviesArr);
@@ -160,7 +151,6 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 			.then( (data) => {
 				let movieListArr = [];
 				angular.forEach(data.data, function(value,key) {
-					// posterApply(value);
 					if (value.hasOwnProperty('poster_path')!==true) {
 						value.poster_path = '../img/no-poster.jpg';
 					} else {
