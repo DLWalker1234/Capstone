@@ -4,7 +4,7 @@
 	<div class="row">
 	<div class="col s12">
 		<h2>Rank</h2>
-		<div ng-repeat="movie in top track by $index">
+		<div class="list" ng-repeat="movie in top track by $index" >
 			<h5>{{movie.original_title}}</h5>
 		</div>
 	</div>
@@ -13,10 +13,10 @@
 
 
 
-	<div class="col s3" ng-click="voteMovie1(movie1, movie2)">
+	<div class="col s3 slide-in-bottom" ng-click="voteMovie1(movie1, movie2)">
         <div class="">
         	<div class="" >
-          	<div >
+          	<div class="">
             	<!-- <div class="card-image"> -->
               	<img class="image-size" ng-src="{{movie1.poster_path}}">
             <!-- </div> -->
@@ -30,9 +30,9 @@
        </div>
       </div>
   			<div class="col s2">
-  			<img class="vs" ng-src="img/vs.png">
+  			<img class="rotate-center vs" ng-src="img/vs2.png">
   			</div>
-      <div class="col s3" ng-click="voteMovie1(movie1, movie2)">	
+      <div class="col s3 slide-in-top" ng-click="voteMovie1(movie1, movie2)">	
       <div class="">
         <div class="">
           	

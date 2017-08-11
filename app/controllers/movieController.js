@@ -108,7 +108,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 		};
 
 		$scope.voteMovie1 = (movie1, movie2) => {
-			movie1.won += 1;
+			movie1.won += 3;
 			movie1.totalFights += 1;
 			movie1.rank = movie1.won/movie1.totalFights;
 			movie2.totalFights += 1;
@@ -131,7 +131,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 		};
 
 		$scope.voteMovie2 = (movie2, movie1) => {
-			movie2.won += 1;
+			movie2.won += 3;
 			movie2.totalFights += 1;
 			movie2.rank = movie2.won/movie2.totalFights;
 			movie1.totalFights += 1;
