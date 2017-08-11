@@ -12,6 +12,7 @@
     "matchdep": "^0.3.0"
   },
   "dependencies": {
-    "angular-animate": "^1.6.5"
+    "angular-animate": "^1.6.5",
+    "elo-rank": "^1.0.3"
   }
 }

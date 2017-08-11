@@ -2,7 +2,7 @@
 
 let movieApp = angular.module("MovieApp", ["ngRoute"])
 .constant("FirebaseUrl", "https://movievs-2dac3.firebaseio.com");
-// .constant("_", window._);
+// .constant('EloRank','lib/elo-rank/index.js');
 
 
 let isAuth = (UserFactory) => {
@@ -20,6 +20,10 @@ let isAuth = (UserFactory) => {
 
 movieApp.config( ($routeProvider) => {
 	$routeProvider
+	// .when('/', {
+	// 	templateUrl: 'partials/splash.html',
+	// 	controller: 'SplashController'
+	// })
 	.when('/', {
 		templateUrl: 'partials/logIn.html',
 		controller: 'UserController'

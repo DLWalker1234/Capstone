@@ -108,20 +108,30 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 		};
 
 		$scope.voteMovie1 = (movie1, movie2) => {
-			movie1.won += 3;
-			movie1.totalFights += 1;
-			movie1.rank = movie1.won/movie1.totalFights;
-			movie2.totalFights += 1;
-			console.log('before push', rankMoviesArr);
-			// rankMoviesArr.push(movie1, movie2);
+			movie1 = $scope.movie1;
+			movie2 = $scope.movie2;
+
+			if (movie1.rank === movie2.rank) {
+				movie1.rank += 100;
+				movie1.totalFights += 1;
+				movie2.rank -= 50;
+			} else if (movie1.rank < movie2.rank) {
+				movie1.rank += 200;
+				movie1.totalFights += 1;
+				movie2.rank -= 100;
+			} else if (movie1.rank > movie2.rank) {
+				movie1.rank += 50;
+				movie1.totalFights += 1;
+				movie2.rank -= 50;
+			}
+			
 			rankMoviesArr = _.uniqBy(rankMoviesArr, "original_title");
-			console.log('after push', rankMoviesArr);
 			
 
 			sortByrank(rankMoviesArr);
-			sortByWon(rankMoviesArr);
+			// sortByWon(rankMoviesArr);
 			makeTop20(rankMoviesArr, top20);
-
+			console.log('top', top20);
 			
 			removeMovie(movie1);
 			removeMovie(movie2);
@@ -131,16 +141,28 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 		};
 
 		$scope.voteMovie2 = (movie2, movie1) => {
-			movie2.won += 3;
-			movie2.totalFights += 1;
-			movie2.rank = movie2.won/movie2.totalFights;
-			movie1.totalFights += 1;
-			
-			// rankMoviesArr.push(movie2, movie1);
+			movie2 = $scope.movie2;
+			movie1 = $scope.movie1;
 
+			if (movie2.rank === movie1.rank) {
+				movie2.rank += 100;
+				movie2.totalFights += 1;
+				movie1.rank -= 50; 
+			} else if (movie2.rank < movie1.rank) {
+				movie2.rank += 200;
+				movie2.totalFights += 1;
+				movie1.rank -= 100;
+			} else if (movie2.rank > movie1.rank) {
+				movie2.rank += 50;
+				movie2.totalFights += 1;
+				movie1.rank -= 50;
+			}
+	
 			sortByrank(rankMoviesArr);
-			sortByWon(rankMoviesArr);
+			// sortByWon(rankMoviesArr);
 			makeTop20(rankMoviesArr, top20);
+
+			console.log('top', top20);
 
 
 			removeMovie(movie1);
@@ -169,7 +191,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 					}
 					value.release_date = value.release_date.split("-");
 					value.release_date = value.release_date[0];
-					value.rank = 0;
+					value.rank = 1000;
 					value.won = 0;
 					value.lose = 0;
 					value.totalFights = 0;
@@ -177,6 +199,7 @@ movieApp.controller("MovieController", function($filter, $scope, $window, MovieF
 					movieListArr = _.uniqBy( movieListArr, "original_title");
 				});
 				$scope.movies = movieListArr;
+				console.log('movies', $scope.movies);
 				pickRandomMovies();
 			});
 
